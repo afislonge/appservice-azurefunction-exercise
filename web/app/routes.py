@@ -1,11 +1,11 @@
-from app import app, db, queue_client
+import logging
+from app import app, db
 from datetime import datetime
 from app.models import Attendee, Conference, Notification
 from flask import render_template, session, request, redirect, url_for, flash, make_response, session
-from azure.servicebus import Message
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
-import logging
+from azure.servicebus import ServiceBusClient, ServiceBusMessage
 
 @app.route('/')
 def index():
@@ -67,36 +67,47 @@ def notification():
             db.session.add(notification)
             db.session.commit()
 
+            print("Done saving notification {}".format(notification.id))
+            print("-----------------------")          
+
             ##################################################
             ## TODO: Refactor This logic into an Azure Function
             ## Code below will be replaced by a message queue
             #################################################
-            attendees = Attendee.query.all()
+            # create a Service Bus client using the connection string      
+            servicebus_client = ServiceBusClient.from_connection_string(conn_str=app.config.get('SERVICE_BUS_CONNECTION_STRING'), logging_enable=True)
 
-            for attendee in attendees:
-                subject = '{}: {}'.format(attendee.first_name, notification.subject)
-                send_email(attendee.email, subject, notification.message)
+            with servicebus_client:
+                sender = servicebus_client.get_queue_sender(queue_name=app.config.get('SERVICE_BUS_QUEUE_NAME'))
+                with sender:
+                    message = ServiceBusMessage(str(notification.id))
+                    sender.send_messages(message)                               
 
-            notification.completed_date = datetime.utcnow()
-            notification.status = 'Notified {} attendees'.format(len(attendees))
-            db.session.commit()
-            # TODO Call servicebus queue_client to enqueue notification ID
-
+            print("Done sending messages {}".format(notification.id))
+            print("-----------------------")
+            
             #################################################
             ## END of TODO
             #################################################
 
             return redirect('/Notifications')
-        except :
-            logging.error('log unable to save notification')
+        except (Exception) as error:
+            logging.error(error)
 
     else:
         return render_template('notification.html')
 
 
+def send_message(sender):
+    logging.info('about to send message to service bus')
+
+
+def enqueu_message(sender):
+    logging.info('about to send message to service bus')
+    
 
 def send_email(email, subject, body):
-    if not app.config.get('SENDGRID_API_KEY')
+    if not app.config.get('SENDGRID_API_KEY'):
         message = Mail(
             from_email=app.config.get('ADMIN_EMAIL_ADDRESS'),
             to_emails=email,
