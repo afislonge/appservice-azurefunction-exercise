@@ -15,7 +15,7 @@ class BaseConfig:
     SERVICE_BUS_CONNECTION_STRING ='Endpoint=sb://udacityservicebus2.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=fMV0xyn4ZrUO4E8zUcSvKgRvkz1ndqSSL5fSZ9n4rSo=' #TODO: Update value
     SERVICE_BUS_QUEUE_NAME ='notificationqueue'
     ADMIN_EMAIL_ADDRESS: 'afis.longe@venturegardengroup.com'
-    SENDGRID_API_KEY = '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' #Configuration not required, required SendGrid Account
+    SENDGRID_API_KEY = '' #Configuration not required, required SendGrid Account
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
