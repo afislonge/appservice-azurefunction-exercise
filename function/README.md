@@ -1,4 +1,4 @@
-# Azure Queues and Service Bus queues - compared and contrasted
+## Azure Queues and Service Bus queues - compared and contrasted
 
 This article analyzes the cost effectiveness of choosen Azure web app and the Azure function
 
