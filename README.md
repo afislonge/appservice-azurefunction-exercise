@@ -63,9 +63,23 @@ Complete a month cost analysis of each Azure resource to give an estimate total 
 
 | Azure Resource | Service Tier | Monthly Cost |
 | ------------ | ------------ | ------------ |
-| *Azure Postgres Database* |     |              |
-| *Azure Service Bus*   |         |              |
-| ...                   |         |              |
+| *Azure Postgres Database* |      *Basic*        |     $32.82         |
+| *Azure Service Bus*   |        *Standard*           |       $9.81       |
+| *Azure Storage Account*  |      *Standard*          |     $24.04         |
+| *Azure App Service*  |      *Basic*          |     $13.14         |
 
 ## Architecture Explanation
-This is a placeholder section where you can provide an explanation and reasoning for your architecture selection for both the Azure Web App and Azure Function.
+When architecting a new cloud software or applications, one of the key decisions architects and developers must make is a way to develop fast, connect to the backend services, running backend tasks, and background processing, and even some simple tasks such as scheduling and sending emails without affecting the main application processing. This is where azure functions app and web apps can come handy and useful.
+The choice of web app and azure function for this architecture is based on the benefit offerred as stated below:
+ 
+### Azure Web Apps have the following benefits
+- **Pay for what you use** : Microsoft Azure Web App Services are ideal for all businesses due to its pay-as-you-go pricing. These cost-effective services come with built-in load balancers that further save on your infrastructure costs. Also, you can opt to scale up or down the hardware based on the expected load. It offers direct savings due to low infrastructure requirements during the off-peak times.
+- **No server maintenance** : With Microsoft Azure Web Apps, all you have to do is deploy your apps and it will take care of the other activities. It saves you from the hassle of server maintenance. It eliminates the need for space, infrastructure and cost of managing a server room and the personnel to manage servers.
+- **Secure and cost-effective integration with other SaaS apps** : Azure Web Apps enables you to securely and easily integrate your web app development with other SaaS apps such as Salesforce, Office 365, Dropbox and Concur. This ability to combine multiple apps serves as the best feature when it comes to significant cost saving.
+
+
+### Azure functions have the following benefits
+- Azure functions app is lightweight and requires very less resources to deploy and execute.
+- Azure functions app us serverless and does not require any Web server setup in cloud.
+- Azure functions app is compute-on-demand and doesn’t consume resources when not running.
+- Azure functions app charges are pay per use and you don’t pay anything if not using.

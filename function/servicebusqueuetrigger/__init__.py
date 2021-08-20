@@ -22,16 +22,15 @@ def main(msg: func.ServiceBusMessage):
     logging.info(
         'Python ServiceBus queue trigger processed message: %s', notification_id)
 
-    # TODO: Get connection to database
-    conn = psycopg2.connect(user=pg_user,
-                            password=pg_pwd,
-                            database=pg_db)
-
-    cursor = conn.cursor()
-    print("PostgreSQL server information")
-    print(conn.get_dsn_parameters(), "\n")
-
     try:
+        # TODO: Get connection to database
+        conn = psycopg2.connect(user=pg_user,
+                                password=pg_pwd,
+                                database=pg_db, host=pg_url)
+
+        cursor = conn.cursor()
+        print("PostgreSQL server information")
+        print(conn.get_dsn_parameters(), "\n")
         # db operation
 
         cursor.execute(
