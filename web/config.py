@@ -19,7 +19,7 @@ class BaseConfig:
     SERVICE_BUS_QUEUE_NAME = 'udacityqueue'
     ADMIN_EMAIL_ADDRESS: 'afis.longe@venturegardengroup.com'
     # Configuration not required, required SendGrid Account
-    SENDGRID_API_KEY = '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'
+    SENDGRID_API_KEY = ''
 
 
 class DevelopmentConfig(BaseConfig):
