@@ -67,6 +67,9 @@ Complete a month cost analysis of each Azure resource to give an estimate total 
 | *Azure Service Bus*   |        *Standard*           |       $9.81       |
 | *Azure Storage Account*  |      *Standard*          |     $24.04         |
 | *Azure App Service*  |      *Basic*          |     $13.14         |
+| *Azure App Service plan*  |      *Free*          |     $0         |
+| *Azure Function*  |      *Consumption*          |     $0         |
+|   |      **Total Cost**          |     **$79.81**         |
 
 ## Architecture Explanation
 When architecting a new cloud software or applications, one of the key decisions architects and developers must make is a way to develop fast, connect to the backend services, running backend tasks, and background processing, and even some simple tasks such as scheduling and sending emails without affecting the main application processing. This is where azure functions app and web apps can come handy and useful.
