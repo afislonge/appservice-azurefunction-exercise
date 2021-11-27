@@ -7,7 +7,7 @@ class BaseConfig:
     DEBUG = True
     POSTGRES_URL = "udacitydemoserver.postgres.database.azure.com"  # TODO: Update value
     POSTGRES_USER = "udacitydbadmin@udacitydemoserver"  # TODO: Update value
-    POSTGRES_PW = "@l0ng31977"  # TODO: Update value
+    POSTGRES_PW = "123456777"  # TODO: Update value
     POSTGRES_DB = "techconfdb"  # TODO: Update value
     DB_URL = 'postgresql://{user}:{pw}@{url}/{db}'.format(
         user=POSTGRES_USER, pw=POSTGRES_PW, url=POSTGRES_URL, db=POSTGRES_DB)
